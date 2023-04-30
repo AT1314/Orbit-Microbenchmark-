@@ -3,9 +3,10 @@ To measure the performance of the orbit API(s), microbenchmarks are written, whi
 
 ## orbit_pool_create
 ```struct orbit_pool *orbit_pool_create(struct orbit_module *ob, size_t init_pool_size);```
-![orbit_pool_create](./orbit_pool_create/figure.pdf){width=65%}
+
+![2023-05-01 00-16-47 的屏幕截图](/home/cat/Documents/Orbit_microbenchmark/Orbit-Microbenchmark-/orbit_area_create/2023-05-01 00-16-47 的屏幕截图.png)
 
 
 ## orbit_call
 ```long orbit_call(struct orbit_module *module, size_t npool, struct orbit_pool** pools, orbit_entry func, void *arg, size_t argsize);```
-![orbit_call](./orbit_call/figure.pdf){width=65%}
+![2023-05-01 00-17-57 的屏幕截图](/home/cat/Documents/Orbit_microbenchmark/Orbit-Microbenchmark-/orbit_call/2023-05-01 00-17-57 的屏幕截图.png)
