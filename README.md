@@ -3,9 +3,9 @@ To measure the performance of the orbit API(s), microbenchmarks are written, whi
 
 ## orbit_pool_create
 ```struct orbit_pool *orbit_pool_create(struct orbit_module *ob, size_t init_pool_size);```
-<img src="/orbit_area_create/figure.pdf" title="orbit_pool_create performance">
+![orbit_pool_create](./orbit_pool_create/figure.pdf){width=65%}
 
 
 ## orbit_call
 ```long orbit_call(struct orbit_module *module, size_t npool, struct orbit_pool** pools, orbit_entry func, void *arg, size_t argsize);```
-<img src="/orbit_call/figure.pdf" title="orbit_call performance">
+![orbit_call](./orbit_call/figure.pdf){width=65%}
