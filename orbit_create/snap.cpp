@@ -17,12 +17,15 @@ using namespace std::chrono;
 #define GB (1024UL * MB)
 
 // Force assert regardless of NDEBUG matter
-#define assert(expr) do { \
-		if (!(expr)) \
+#define assert(expr)                         \
+	do                                       \
+	{                                        \
+		if (!(expr))                         \
 			fprintf(stderr, #expr "failed"); \
 	} while (0)
 
-unsigned long empty(void *store, void *argbuf) {
+unsigned long empty(void *store, void *argbuf)
+{
 	(void)store;
 	(void)argbuf;
 	std::this_thread::sleep_for(milliseconds(5));
@@ -34,17 +37,19 @@ orbit_pool *pool;
 orbit_allocator *alloc;
 
 // Make pages dirty
-void dirty_pages(orbit_pool *pool) {
-	for (char *page = (char*)pool->rawptr;
-		page < (char*)pool->rawptr + pool->used;
-		page += PGSIZE)
+void dirty_pages(orbit_pool *pool)
+{
+	for (char *page = (char *)pool->rawptr;
+		 page < (char *)pool->rawptr + pool->used;
+		 page += PGSIZE)
 	{
 		*page = 'h';
 	}
 }
 
 // Create an orbit instance according to the paper description
-long long orbit_one(void) {
+long long orbit_one(void)
+{
 	auto t1 = high_resolution_clock::now();
 	m = orbit_create("snap percentage", empty, NULL);
 	auto t2 = high_resolution_clock::now();
@@ -52,10 +57,10 @@ long long orbit_one(void) {
 	return duration_cast<nanoseconds>(t2 - t1).count();
 }
 
-void bench_snap(size_t size, bool csv) {
+void bench_snap(size_t size, bool csv)
+{
 	pool = orbit_pool_create(NULL, size);
 	alloc = orbit_allocator_from_pool(pool, false);
-	
 
 	if (!csv)
 		printf("Testing snapshot size %lu\n", size);
@@ -64,8 +69,11 @@ void bench_snap(size_t size, bool csv) {
 	assert(ptr);
 	assert(size == pool->used);
 
+	/*  Fill the allocated space with non-zero data to ensure the kernel
+		actually allocated a physical page for it */
 	dirty_pages(pool);
 
+	/*  Calculate the running time */
 	long long duration = orbit_one();
 
 	if (csv)
@@ -76,12 +84,14 @@ void bench_snap(size_t size, bool csv) {
 	orbit_destroy(m->gobid);
 }
 
-void usage(const char *prog_name, int exit_val) {
+void usage(const char *prog_name, int exit_val)
+{
 	fprintf(stderr, "Usage: %s <size>\n", prog_name);
 	exit(exit_val);
 }
 
-int main(int argc, const char *argv[]) {
+int main(int argc, const char *argv[])
+{
 	if (argc != 2)
 		usage(argv[0], 1);
 	size_t size;
