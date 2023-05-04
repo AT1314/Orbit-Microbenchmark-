@@ -34,7 +34,7 @@ def plot(args):
     figure, ax = plt.subplots(figsize=(4.6, 2.5))
 
     ind = np.arange(len(df))
-    ax.plot(ind, df['Time(us)'].values, label='orbit_area_create', 
+    ax.plot(ind, df['Time(us)'].values, label='orbit_async_call', 
             marker='s', color='#00008B', linewidth=2, zorder=3)
     ax.set_yscale('log')
     ax.set_xticks(ind[::3])
