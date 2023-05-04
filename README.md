@@ -1,5 +1,5 @@
 # Orbit-Microbenchmark 
-To measure the performance of the orbit API(s), microbenchmarks are written, which can also help analyse and find the potential performance bottleneck.
+To measure the performance of the orbit API(s), microbenchmarks are written, which can also help analyse and find the potential performance bottleneck. The snap.cpp file in each directory should be copied into the GUEST VM's orbit/experiment/micro-call repo to replace the original one, then run the script to generate the result.
 
 ## orbit_pool_create
 ```struct orbit_pool *orbit_pool_create(struct orbit_module *ob, size_t init_pool_size);```
