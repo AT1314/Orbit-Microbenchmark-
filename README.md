@@ -21,7 +21,7 @@ To measure the performance of the orbit API(s), microbenchmarks are written, whi
 ```orbit *orbit_create(const char *name, orbit_entry entry, void* (*init)(void));```
 
 
-![Figure 2. orbit_create performance](/orbit_create/figure1.png)
+![Figure 3. orbit_create performance](/orbit_create/figure1.png)
 
 
 
@@ -29,4 +29,4 @@ To measure the performance of the orbit API(s), microbenchmarks are written, whi
 ```orbit_future *orbit_call_async(orbit *ob, int flags, size_t narea, orbit_area** areas, orbit_entry func_once, ...)```
 
 
-![Figure 2. orbit_async_call performance related to the number of orbit calls](/orbit_async_call/figure1.png)
+![Figure 4. orbit_async_call performance related to the number of orbit calls](/orbit_async_call/figure1.png)
